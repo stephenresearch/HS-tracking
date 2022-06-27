@@ -5,16 +5,6 @@ library(move)
 library(raster)
 library(ggplot2)
 
-# load the example data and convert them into a data.frame
-#D <- read.csv("ArgosData_20211022_track.csv", header = T)
-#move_df <- as.data.frame(D)
-#move_df <- methods::as(move_df, "data.frame")
-#move_df <- mutate(move_df, MsgDate = mdy_hms(MsgDate), LocDate = mdy_hms(LocDate))
-
-#most recent download
-#simplified by removing colums and variable names changed to be R friendly
-#D2 <- read.csv("ArgosData_2022_03_25_15_28_02-simple.csv", header=T)
-
 #import data file as exported, filter for location quality, and rename key columns
 Data <- read.csv("ArgosData_2022_06_24_14_53_34.csv", header=T, check.names=T)
 Qual <- c("3", "2", "1")
