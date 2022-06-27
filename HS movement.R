@@ -18,15 +18,6 @@ move_df <- methods::as(move_df, "data.frame")
 
 move_df <- distinct(move_df, move_df$MsgDate, .keep_all = TRUE)
 
-##need to remove duplicate time stamps in MsgDate variable
-##currently done in excel before importing
-
-#filtered Argos class 3,2,1 and duplicate time stamps and dummy locations
-D3 <- read.csv("ArgosData_2022_06_10_19_52_50-nodupl.csv", header=T)
-move_df <- as.data.frame(D3)
-move_df <- methods::as(move_df, "data.frame")
-move_df <- mutate(move_df, MsgDate = mdy_hms(MsgDate), LocDate = mdy_hms(LocDate))
-
 # use df2move to convert the data.frame into a moveStack
 m <- df2move(move_df,
         proj = "+init=epsg:4326 +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0",
